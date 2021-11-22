@@ -6,15 +6,24 @@ const Itinerary = new Schema({
     name: String,
     description: String,
     distance: Number,
-    location: Number,
-    active: Boolean,
+    
    
     difficulty: {
         type: String,
-        enum: ["EASY","NORMAL",HARD]
+        enum: ["EASY","NORMAL","HARD"]
 
-    }
+    },
+    location: [{
+        type: {
+            type: "Point"
+        },
+        coordinates: [Number]
+    }],
+
+    user_id: { type: Schema.Types.ObjectId, ref: 'User' },
     /* park_id: { type: Schema.Types.ObjectId, ref: 'Park' } */
 })
+
+itinerarySchema.index({ location: '2dsphere' });
 
 module.exports = mongoose.model('Itinerary', Itinerary)

@@ -5,14 +5,14 @@ const Motorbike = new Schema({
     /* --- */
     name: {
         type: String,
-        require: True,
-        unique: True,
+        required: true,
+       
     },
 
     typesMotorbike: {
         type: String,
-        require: True,
-        unique: True,
+        required: true,
+        
         enum: ["URBAN","TRAIL","CUSTOM"]
     },
     
@@ -20,28 +20,37 @@ const Motorbike = new Schema({
     
     brand:{
         type: String,
-        require: True,
-        unique: True,
+        required: true,
+        
         enum : ["BMW", "HONDA","HARLEY-DAVIDSON"]
     },
     
    cc: Number,
    
-   active: Boolean,
+   
   
-   weigth: Number,
+   weight: Number,
 
    imageURL: String,
 
    license: {
        type: String,
-       require: True,
-       unique: True,
+       required: true,
        enum: ["A1", "A2", "A"],
     },
 
+    user_id: { type: Schema.Types.ObjectId, ref: 'User' },
+
 
    },
+   
+   { 
+
+     
+
+        // this second object adds extra properties: `createdAt` and `updatedAt`
+        timestamps: true,
+
     
     
     /* park_id: { type: Schema.Types.ObjectId, ref: 'Park' } */
