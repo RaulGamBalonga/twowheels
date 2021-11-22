@@ -31,7 +31,7 @@ const Motorbike = new Schema({
   
    weigth: Number,
 
-    imageURL: String,
+   imageURL: String,
 
    license: {
        type: String,

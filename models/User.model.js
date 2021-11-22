@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 
-// TODO: Please make sure you edit the user model to whatever makes sense in this case
+// Please make sure you edit the user model to whatever makes sense in this case
 const userSchema = new Schema(
   {
     username: {
@@ -11,40 +11,40 @@ const userSchema = new Schema(
       // unique: true -> Ideally, should be unique, but its up to you
     },
     password: {
-    type:String,
-    require: True,
-    unique: True,
-  },
-  
-  license: {
-    type: String,
-    require: True,
-    unique: True,
-    enum: ["A1","A2","A"],
-  },
-  motorbike: {
-    type: String,  /* >OWN? */
+      type: String,
+      require: True,
+      unique: True,
     },
 
-  itenerary: {
-    type: String,
-  },
+    license: {
+      type: String,
+      require: True,
+      unique: True,
+      enum: ["A1", "A2", "A"],
+    },
+    motorbike: {
+      type: String,  /* >OWN? */
+    },
 
-  usertype: {
-    type: String,
-    require: True,
-    unique: True,
-    enum: ["USER","ADMIN"]
+    itenerary: {
+      type: String,
+    },
 
-  },
-  
-  active: Boolean,
+    usertype: {
+      type: String,
+      require: True,
+      unique: True,
+      enum: ["USER", "ADMIN"]
 
-  imageURL: String,
+    },
 
-  motorbike_id: { type: Schema.Types.ObjectId, ref: 'Motorbike' },
+    active: Boolean,
 
-  itinerary_id: { type: Schema.Types.ObjectId, ref: 'Itenerary' }
+    imageURL: String,
+
+    motorbike_id: { type: Schema.Types.ObjectId, ref: 'Motorbike' },
+
+    itinerary_id: { type: Schema.Types.ObjectId, ref: 'Itenerary' }
 
   
   {
