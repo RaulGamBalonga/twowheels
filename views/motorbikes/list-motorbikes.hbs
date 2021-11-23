@@ -1,0 +1,34 @@
+<div class="container coasters-index">
+
+    <a href="/motorbikes/new" class="btn btn-dark">Crear nueva moto</a>
+
+    <h1 style="font-weight: 100">Listado de motos</h1>
+
+
+    <!-- ***** CREA UNA FICHA DE LISTA POR CADA MONTAÑA RUSA **** -->
+    <ul>
+        {{#each motorbikes}}
+
+        <li> <b> Modelo de moto:</b> {{name}}
+            <b>Tipo de moto:</b> {{typesMotorbike}}
+            <b>Detalles:</b>
+            {{description}}<b> Marca:</b>
+            {{brand}} <b>Cilindrada:</b> {{cc}}
+            <b>Peso:</b>
+            {{weight}}<b> Foto moto:</b>
+            {{imageURL}}
+             <b> Tipo de permiso:</b>
+            {{License}}
+        </li>
+
+        <a href="/motorbikes/{{id}}"> detalles</a>
+
+
+        {{/each}}
+    </ul>
+
+
+
+
+
+</div>

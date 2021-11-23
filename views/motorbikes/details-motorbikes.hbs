@@ -1,0 +1,28 @@
+<div class="container coasters-index">
+
+    <h1 style="font-weight: 100">N{{name}}</h1>
+
+    <h4>Modelo de moto:</h4>
+    <p>{{name}}</p>
+    
+    <p><strong>Tipo de moto:: </strong> {{typesMotorbike}}
+     <strong>Detalles: </strong> {{description}}
+     <strong>Marca: </strong> {{brand}}
+     <strong>Cilindrada: </strong> {{cc}}
+     <strong>Peso: </strong> {{weight}}
+     <strong>Foto moto: </strong> {{imageURL}}
+     <strong>Tipo de permiso: </strong> {{License}}
+     
+     
+      </p>
+
+    <hr>
+
+    {{!-- <h5>Sobre el parque</h5>
+    <p><strong>Nombre</strong>: {{park_id.name}} </p>
+    <p><strong>Descripción</strong>: {{description}} </p> --}}
+
+    <a href="/motorbikes" class="btn btn-dark">Volver</a>
+    <a href="/motorbikes/delete?id={{id}}" class="btn btn-dark">Delete</a> {{!-- hay que pòner la query -?- --}}
+
+</div>
