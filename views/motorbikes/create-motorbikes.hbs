@@ -8,7 +8,7 @@
 
         <div class="col-md-6">
 
-            <form action="motorbikes/create-motorbike" method="POST">
+            <form action="/motorbikes/new" method="POST">
                 <div class="form-group">
                     <label for="name-input">Nombre de la motocicleta</label>
                     <input name="name" type="text" class="form-control" id="name-input">
@@ -22,17 +22,13 @@
                     <input name="description" type="number" class="form-control" id="inversions-input">
                 </div>
                 <div class="form-group">
-                    <label for="brand-input">cc</label>
-                    <input name="brand" type="number" class="form-control" id="length-input">
-                </div>
-                <div class="form-group">
-                    <label for="park-list">Parque en el que se encuentra:</label>
-                    <select name="park_id" class="form-control" id="park-list">
+                    <label for="brand">Parque en el que se encuentra:</label>
+                    <select name="brand" class="form-control" id="brand">
 
                         <option>Seleccionar</option>
 
-                        {{#each motorbikes}}
-                        <option value="{{_id}}">{{name}}</option> {{!-- id con barra baja objeto sin barra baja es un
+                        {{#each brands}}
+                        <option value="{{this}}">{{this}}</option> {{!-- id con barra baja objeto sin barra baja es un
                         string --}}
                         {{/each}}
 

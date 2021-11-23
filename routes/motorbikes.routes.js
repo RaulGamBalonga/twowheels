@@ -1,24 +1,22 @@
-const motorbike = require("../models/coaster.model");
-const Itinerary = require("../models/coaster.model");
+const Motorbike = require("../models/Motorbike.model");
+/* const Itinerary = require("../models/Itinerary.model"); */
 
 const router = require("express").Router();
 
 // Endpoints
 /* CREAR -create[<C>-R-U-D] */
 router.get("/new", (req, res) => {
-    Motorbike.find()
-        .then(motorbikes => {
-            res.render("motorbikes/create-motorbike", { Motorbike })
-        })
+    
+            res.render("motorbikes/create-motorbikes", { brands: ["BMW", "HONDA", "HARLEY-DAVIDSON"] })
 
 })
 
 
 router.post("/new", (req, res) => {
-    const { name, typesMotorbike, description, brand, cc, weight, imageURL, license, user_id } = req.body
+    const { name, typesMotorbike, description, brand, cc, weight, imageURL, license, } = req.body
 
 
-    Motorbike.create({ name, typesMotorbike, description, brand, cc, weight, imageURL, license, user_id })
+    Motorbike.create({ name, typesMotorbike, description, brand, cc, weight, imageURL, license, })
         .then(createdMotorbike => res.redirect("/"))
         .catch(err => console.log(err))
 }
@@ -29,7 +27,8 @@ router.post("/new", (req, res) => {
 router.get("/", (req, res, next) => {
 
     Motorbike.find()
-        /* .populate('park_id') */
-        .then(motorbike => res.render("motorbikes/read-motorbike", { motorbikes }))
+
+        .then(motorbike => res.render("motorbikes/read-motorbike", { motorbike }))
         .catch(err => console.log(err))
 });
+module.exports = router

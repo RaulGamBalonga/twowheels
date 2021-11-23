@@ -10,16 +10,21 @@ module.exports = app => {
   const authRoutes = require("./auth.routes");
   app.use("/", authRoutes);
 
+ // Itineraries Routes
+ app.use("/itinerarios", require("./itineraries.routes"));
+
+// Motorbikes Routes
+  app.use("/motorbikes", require("./motorbikes.routes")); 
+
+
 }
 
- /* app.use("/usuarios", require("./user.routes"));  */
+/*  app.use("/usuarios", require("./user.routes"));   */
 
-  // Itineraries Routes
-/*  app.use("/Itinerarios", require("./itineraries.routes")); 
+ 
 
-  // Motorbikes Routes
-  app.use("/Motocicletas", require("./motorbikes.routes")); 
+  
 
-} /*  */
+ /*  */
 
 

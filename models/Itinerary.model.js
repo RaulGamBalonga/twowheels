@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 // 
 const Itinerary = new Schema({
-    /* --- */
+   
     name: String,
     description: String,
     distance: Number,
@@ -15,7 +15,7 @@ const Itinerary = new Schema({
     },
     location: [{
         type: {
-            type: "Point"
+             type: String,
         },
         coordinates: [Number]
     }],
@@ -24,6 +24,6 @@ const Itinerary = new Schema({
     /* park_id: { type: Schema.Types.ObjectId, ref: 'Park' } */
 })
 
-itinerarySchema.index({ location: '2dsphere' });
+Itinerary.index({ location: '2dsphere' }); 
 
 module.exports = mongoose.model('Itinerary', Itinerary)
