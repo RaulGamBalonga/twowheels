@@ -7,7 +7,12 @@ const router = require("express").Router();
 /* CREAR -create[<C>-R-U-D] */
 router.get("/new", (req, res) => {
     
-            res.render("motorbikes/create-motorbikes", { brands: ["BMW", "HONDA", "HARLEY-DAVIDSON"] })
+    res.render("motorbikes/create-motorbikes", {
+        
+        brands: ["BMW", "HONDA", "HARLEY-DAVIDSON"],
+        typesMotorbike: ["URBAN", "TRAIL", "CUSTOM"],
+        license: ["A1", "A2", "A"] 
+    })
 
 })
 
