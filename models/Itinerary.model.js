@@ -4,13 +4,18 @@ const Schema = mongoose.Schema
 const Itinerary = new Schema({
    
     name: String,
-    description: String,
     distance: Number,
     
    
     difficulty: {
         type: String,
-        enum: ["EASY","NORMAL","HARD"]
+        enum: ["EASY", "NORMAL", "HARD", "HELL IN THE EARTH"]
+
+    },
+
+    description: {
+        type: String,
+        enum: ["ASPHALT", "GRAVEL", "ENDURO", "HARD ENDURO", "DAKAR"]
 
     },
     location: [{

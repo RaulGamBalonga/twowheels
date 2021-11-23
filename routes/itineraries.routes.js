@@ -1,24 +1,30 @@
-/* const Motorbike = require("../models/Motorbike.model"); */
+const { isLoggedIn } = require("../middlewares");
 const Itinerary = require("../models/Itinerary.model");
-
 const router = require("express").Router();
 
-// Endpoints
-/* CREAR -create[<C>-R-U-D] */
-router.get("/new", (req, res) => {
-    Itinerary.find()
-        .then(Itineraries => {
-            res.render("motorbikes/create-motorbike", { Itinerary })
-        })
 
+router.get("/new", (req, res) => {
+
+    res.render("itineraries/create-itinerary", {
+
+        difficulty: ["EASY", "NORMAL", "HARD", "HELL IN THE EARTH"],
+        description: ["ASPHALT", "GRAVEL", "ENDURO", "HARD ENDURO", "DAKAR"]
+    })
 })
 
 
-router.post("/new", (req, res) => {
-    const { name, description, distance, difficulty, location,} = req.body
 
 
-    Itinerary.create({ name, description, distance, difficulty, location, user_id, })
+router.post("/new", isLoggedIn, (req, res) => {
+    const { name, description, distance, difficulty, longitude, latitude} = req.body
+
+    const location = {
+        type: 'Point',
+        coordinates: [latitude, longitude]
+    }
+
+
+    Itinerary.create({ name, description, distance, difficulty, user_id: req.session.currentUser._id, $push: { location: location } })
         .then(createdItinerary => res.redirect("/"))
         .catch(err => console.log(err))
 }
