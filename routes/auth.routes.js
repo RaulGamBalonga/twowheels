@@ -1,18 +1,20 @@
 
 // copiado del repo de Teo mirar cambios que hacer
 
+// Mirar license linea 11 y linea 48
+
 const router = require("express").Router()
 const bcrypt = require('bcryptjs')
 const User = require("../models/User.model")
 
 // Signup
-router.get('/registro', (req, res) => res.render('auth/signup'))
+router.get('/registro', (req, res) => res.render('auth/signup', { license: ["A1", "A2", "A"]}))
 router.post('/registro', (req, res) => {
 
-    const { username, userPwd } = req.body
+    const { username, userPwd, license } = req.body
 
     if (userPwd.length === 0 || username.length === 0) {
-        res.render('auth/signup-form', { errorMsg: 'Rellena todos los campos' })
+        res.render('auth/signup', { errorMsg: 'Rellena todos los campos' })
         return
     }
 
@@ -30,7 +32,7 @@ router.post('/registro', (req, res) => {
             const hashPass = bcrypt.hashSync(userPwd, salt)
 
             User
-                .create({ username, password: hashPass })
+                .create({ username, password: hashPass, license })
                 .then(() => res.redirect('/'))
                 .catch(err => console.log(err))
         })
@@ -43,7 +45,7 @@ router.post('/registro', (req, res) => {
 router.get('/iniciar-sesion', (req, res) => res.render('auth/login'))
 router.post('/iniciar-sesion', (req, res) => {
 
-    const { username, userPwd } = req.body
+    const { username, userPwd} = req.body
 
     if (userPwd.length === 0 || username.length === 0) {
         res.render('auth/login', { errorMsg: 'Rellena los campos' })
@@ -65,7 +67,7 @@ router.post('/iniciar-sesion', (req, res) => {
             }
 
             req.session.currentUser = user
-            res.redirect('/usuarios/profile-page/' + user._id)
+            res.redirect('/')
         })
         .catch(err => console.log(err))
 

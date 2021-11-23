@@ -15,10 +15,10 @@ module.exports = app => {
                 sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
                 secure: process.env.NODE_ENV === 'production',
                 httpOnly: true,
-                maxAge: 30000 // 60 * 1000 ms === 1 min
+                maxAge: 1000 * 60 * 60
             },
             store: MongoStore.create({
-                mongoUrl: process.env.MONGODB_URI || 'mongodb://127.0.0.1/basic-auth'
+                mongoUrl: process.env.MONGODB_URI || 'mongodb://127.0.0.1/twowhells'
             })
         })
     )

@@ -19,7 +19,6 @@ const userSchema = new Schema(
     license: {
       type: String,
       required: true,
-      
       enum: ["A1", "A2", "A"],
     },
    
