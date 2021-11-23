@@ -9,7 +9,7 @@ const Motorbike = new Schema({
        
     },
 
-    typesMotorbike: {
+    typesMotorbike:{
         type: String,
         required: true,
         

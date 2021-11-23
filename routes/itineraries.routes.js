@@ -15,7 +15,7 @@ router.get("/new", (req, res) => {
 
 
 router.post("/new", (req, res) => {
-    const { name, description, distance, difficulty, location, user_id,} = req.body
+    const { name, description, distance, difficulty, location,} = req.body
 
 
     Itinerary.create({ name, description, distance, difficulty, location, user_id, })

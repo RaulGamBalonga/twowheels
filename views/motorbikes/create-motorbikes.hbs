@@ -10,19 +10,19 @@
 
             <form action="/motorbikes/new" method="POST">
                 <div class="form-group">
-                    <label for="name-input">Nombre de la motocicleta</label>
+                    <label for="name-input">Modelo de la motocicleta</label>
                     <input name="name" type="text" class="form-control" id="name-input">
                 </div>
-                <div class="form-group">
-                    <label for="typesMotorbike-input">Tipos de motocicleta</label>
-                    <input name="typesMotorbike" type="text" class="form-control" id="description-input">
+
+                
+                 
+                 <div class="form-group">
+                    <label for="description-input">Descripcion</label>
+                    <input name="description" type="text" class="form-control" id="description-input">
                 </div>
+
                 <div class="form-group">
-                    <label for="description-input">Descrippcion</label>
-                    <input name="description" type="number" class="form-control" id="inversions-input">
-                </div>
-                <div class="form-group">
-                    <label for="brand">Parque en el que se encuentra:</label>
+                    <label for="brand">Marca de la moto</label>
                     <select name="brand" class="form-control" id="brand">
 
                         <option>Seleccionar</option>
@@ -33,6 +33,50 @@
                         {{/each}}
 
                     </select>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="typesMotorbike">Tipo de moto</label>
+                    <select name="typesMotorbike" class="form-control" id="typesMotorbike">
+                
+                        <option>Seleccionar</option>
+                
+                        {{#each typesMotorbike}}
+                        <option value="{{this}}">{{this}}</option> {{!-- id con barra baja objeto sin barra baja es un
+                        string --}}
+                        {{/each}}
+                
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="license">Tipo de Permiso</label>
+                    <select name="license" class="form-control" id="license">
+                
+                        <option>Seleccionar</option>
+                
+                        {{#each license}}
+                        <option value="{{this}}">{{this}}</option> {{!-- id con barra baja objeto sin barra baja es un
+                        string --}}
+                        {{/each}}
+                
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="cc-input">Cilindrada</label>
+                    <input name="cc" type="number" class="form-control" id="cc-input">
+                </div>
+
+                <div class="form-group">
+                    <label for="weight-input">Peso</label>
+                    <input name="weight" type="number" class="form-control" id="weight-input">
+                </div>
+
+                <div class="form-group">
+                    <label for="imageURL-input">Imagen</label>
+                    <input name="imageURL" type="text" class="form-control" id="imageURL-input">
                 </div>
 
                 <button type="submit" class="btn btn-dark">Crear motocicleta</button>
