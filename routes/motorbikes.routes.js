@@ -1,4 +1,6 @@
 const Motorbike = require("../models/Motorbike.model");
+const fileUploader = require('../config/cloudinary.config');
+const { isLoggedIn } = require("../middlewares");
 /* const Itinerary = require("../models/Itinerary.model"); */
 
 const router = require("express").Router();
@@ -6,7 +8,7 @@ const router = require("express").Router();
 // Endpoints
 /* CREAR -create[<C>-R-U-D] Crear modelo de moto con su tipo su marca su imagen etc.. */
 
-router.get("/new", (req, res) => {
+router.get("/new", isLoggedIn, (req, res) => {
 
     res.render("motorbikes/create-motorbikes", {
 
@@ -18,11 +20,11 @@ router.get("/new", (req, res) => {
 })
 
 
-router.post("/new", (req, res) => {
-    const { name, typesMotorbike, description, brand, cc, weight, imageURL, license, } = req.body
+router.post("/new", fileUploader.single('imageURL'), (req, res) => {
+    const { name, typesMotorbike, description, brand, cc, weight, license, } = req.body
+    console.log(req.file);
 
-
-    Motorbike.create({ name, typesMotorbike, description, brand, cc, weight, imageURL, license, user_id: req.session.currentUser._id })
+    Motorbike.create({ name, typesMotorbike, description, brand, cc, weight, imageURL: req.file.path, license, user_id: req.session.currentUser._id })
         .then(createdMotorbike => res.redirect("/motorbikes/list"))
         .catch(err => console.log(err))
 }
