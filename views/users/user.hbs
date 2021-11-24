@@ -1,12 +1,12 @@
+{{!-- perfil de usuario ,foto de perfil,motos,rutas --}}
 
-          <h1>Hola Usuario</h1>    
 
-        <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="..." alt="Card image cap">
-            <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                    content.</p>
-            </div>
-        </div>
 
-        
+<h1>Hola {{user.username}}</h1>
+
+
+<h4>Nombre del usuario:</h4>
+<p>{{name}}</p>
+
+<p><strong>Mis Motos: </strong> {{#each motorbikes}}{{name}}<br />{{/each}}</p>
+<p></p><strong> Mis Rutas: </strong> {{#each itineraries}}{{name}}{{/each}}</p>

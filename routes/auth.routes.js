@@ -6,9 +6,10 @@
 const router = require("express").Router()
 const bcrypt = require('bcryptjs')
 const User = require("../models/User.model")
+const { isADMIN } = require("../utils")
 
 // Signup
-router.get('/registro', (req, res) => res.render('auth/signup', { license: ["A1", "A2", "A"]}))
+router.get('/registro', (req, res) => res.render('auth/signup', { license: ["A1", "A2", "A"] }))
 router.post('/registro', (req, res) => {
 
     const { username, userPwd, license } = req.body
@@ -45,7 +46,7 @@ router.post('/registro', (req, res) => {
 router.get('/iniciar-sesion', (req, res) => res.render('auth/login'))
 router.post('/iniciar-sesion', (req, res) => {
 
-    const { username, userPwd} = req.body
+    const { username, userPwd } = req.body
 
     if (userPwd.length === 0 || username.length === 0) {
         res.render('auth/login', { errorMsg: 'Rellena los campos' })
@@ -67,6 +68,8 @@ router.post('/iniciar-sesion', (req, res) => {
             }
 
             req.session.currentUser = user
+            req.app.locals.isLogged = true
+            req.app.locals.isAdmin = isADMIN(user)
             res.redirect('/')
         })
         .catch(err => console.log(err))
@@ -76,6 +79,8 @@ router.post('/iniciar-sesion', (req, res) => {
 
 // Logout
 router.get('/cerrar-sesion', (req, res) => {
+    req.app.locals.isADMIN = false;
+    req.app.locals.isLogged = false;
     req.session.destroy(() => res.redirect('/'))
 })
 

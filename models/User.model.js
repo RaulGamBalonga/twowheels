@@ -6,14 +6,14 @@ const userSchema = new Schema(
     username: {
       type: String,
       required: true,
-      
+
 
       // unique: true -> Ideally, should be unique, but its up to you
     },
     password: {
       type: String,
       required: true,
-     
+
     },
 
     license: {
@@ -21,12 +21,13 @@ const userSchema = new Schema(
       required: true,
       enum: ["A1", "A2", "A"],
     },
-   
-    
+
+
     usertype: {
       type: String,
-      require: true,
-       enum: ["USER", "ADMIN"]
+      required: true,
+      default: 'USER',
+      enum: ["USER", "ADMIN"]
 
     },
 
