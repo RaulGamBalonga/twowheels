@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-6">
+            <h1 style="font-weight: 100">Detalles del usuario</h1>
+        </div>
+
+        <div class="col-md-6">
+            <form action="/admin/edit?id={{user.id}}" method="POST">
+
+                <div class="form-group">
+                    <label for="username-input">Nombre del usuario</label>
+                    <input name="username" type="text" class="form-control" id="username-input" value="{{user.username}}">
+                </div>
+
+
+                <div class="form-group">
+                    <label for="license-input">Tipo de permiso</label>
+                    <input name="license" type="text" class="form-control" id="license-input"placeholder= "A, A1, A2" value="{{user.license}}">
+                </div>
+
+            //TODO
+               {{!--  <div class="form-group">
+                    <label for="license">Tipo de permiso</label>
+                    <select name="license" class="form-control" id="license" value={{user.license}}>
+
+                        <option>Seleccionar</option>
+
+                        {{#each license}}
+                        <option value="{{this}}">{{this}}</option>
+                        {{/each}}
+
+                    </select>
+                </div> --}}
+
+
+
+
+                <div class="form-group">
+                    <label for="imageURL-input">Foto perfil</label>
+                    <input name="imageURL" type="number" class="form-control" id="imageURL-input"
+                        value={{user.imageURL}}>
+                </div>
+
+
+                <button type="submit" class="btn btn-dark">Editar usuario</button>
+                <a href="/admin/list" class="btn btn-dark">Volver a listado de usuarios</a>
+
+            </form>
+        </div>
+
+    </div>
+</div>

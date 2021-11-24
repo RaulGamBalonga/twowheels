@@ -88,10 +88,10 @@ router.get("/edit/:id", (req, res) => {
 router.post("/edit", (req, res) => {
     const { id } = req.query
     const { name, description, distance, difficulty, longitude, latitude } = req.body
-
+console.log(req.body)
     Itinerary.findByIdAndUpdate(id, { name, description, distance, difficulty, longitude, latitude }, { new: true })
         .then(updatedItinerary => {
-            res.redirect("/itineraries/list")
+            res.redirect("/itinerarios/list")
         })
         .catch(err => console.log(err))
 

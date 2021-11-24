@@ -23,7 +23,7 @@ router.post("/new", (req, res) => {
 
 
     Motorbike.create({ name, typesMotorbike, description, brand, cc, weight, imageURL, license, user_id: req.session.currentUser._id })
-        .then(createdMotorbike => res.redirect("/motorbikes/new"))
+        .then(createdMotorbike => res.redirect("/motorbikes/list"))
         .catch(err => console.log(err))
 }
 )

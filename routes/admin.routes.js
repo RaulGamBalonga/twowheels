@@ -10,7 +10,7 @@ router.get("/list", (req, res, next) => {
 
     User.find()
 
-        .then(users => res.render("motorbikes/list-motorbikes", { users }))
+        .then(users => res.render("admin/list-user", { users }))
         .catch(err => console.log(err))
 });
 
@@ -24,7 +24,7 @@ router.get("/delete", (req, res) => {
     User.findByIdAndDelete(id)
         .then(info => {
             console.log(info)
-            res.redirect("/motorbikes/list")
+            res.redirect("/admin/list")
         })
         .catch(err => console.log(err))
 
@@ -36,7 +36,7 @@ router.get("/edit/:id", (req, res) => {
     const { id } = req.params
     User.findById(id)
         .then((user) => {
-            res.render("motorbikes/update-motorbikes", {
+            res.render("admin/edit-user", {
                 user,
                 enum: ["USER", "ADMIN"]
             })
@@ -55,9 +55,9 @@ router.post("/edit", (req, res) => {
     const { id } = req.query
     const { username, license, imageURL } = req.body
 
-    Motorbike.findByIdAndUpdate(id, { username, license, imageURL }, { new: true })
+    User.findByIdAndUpdate(id, { username, license, imageURL }, { new: true })
         .then(updatedUser => {
-            res.redirect("/motorbikes/list")
+            res.redirect("/admin/list")
         })
         .catch(err => console.log(err))
 

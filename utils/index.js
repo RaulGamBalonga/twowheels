@@ -2,5 +2,5 @@
 
 
 module.exports = {
-    isPM: (user) => user?.role === "PM",
+    isADMIN: (user) => user?.role === "ADMIN",
 }
