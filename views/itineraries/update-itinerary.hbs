@@ -1,0 +1,75 @@
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-6">
+            <h1 style="font-weight: 100">Nueva Ruta</h1>
+        </div>
+
+        <div class="col-md-6">
+            <form action="/itinerarios/new" method="POST">
+
+                <div class="form-group">
+                    <label for="name-input">Nombre de la ruta</label>
+                    <input name="name" type="text" class="form-control" id="name-input"value={{itinerary.name}}>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label for="difficulty">Dificultad</label>
+                    <select name="difficulty" class="form-control" id="difficulty"value={{itinerary.difficulty}}>
+
+                        <option>Seleccionar</option>
+
+                        {{#each difficulty}}
+                        <option value="{{this}}">{{this}}</option>
+                        {{/each}}
+
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Tipo de Terreno</label>
+                    <select name="description" class="form-control" id="description"value={{itinerary.description}}>
+
+                        <option>Seleccionar</option>
+
+                        {{#each description}}
+                        <option value="{{this}}">{{this}}</option>
+                        {{/each}}
+
+                    </select>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="distance-input">Distancia</label>
+                    <input name="distance" type="number" class="form-control" id="distance-input"value={{itinerary.distance}}>
+                </div>
+
+                <div class="form-group">
+                    {{!-- TODO --}}
+                    <label for="location-input">Cordenadas</label>
+                    <input name="longitude" type="number" class="form-control" id="location-input"value={{itinerary.longitude}}>
+                </div>
+                <div class="form-group">
+                    {{!-- TODO --}}
+                    <label for="location-input">Cordenadas</label>TODO
+                    <input name="latitude" type="number" class="form-control" id="location-input"value={{itinerary.latitude}}>
+                </div>
+
+
+
+                {{!-- <div class="form-group">
+                    <label for="imageURL-input">Imagen</label>
+                    <input name="imageURL" type="text" class="form-control" id="imageURL-input">
+                </div> --}}
+
+                <button type="submit" class="btn btn-dark">Crear nueva ruta</button>
+                <a href="/itinerarios" class="btn btn-dark">Volver</a>
+
+            </form>
+        </div>
+
+    </div>
+</div>
