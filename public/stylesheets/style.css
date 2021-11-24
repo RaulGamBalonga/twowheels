@@ -11,4 +11,21 @@
 
 }
 
+#imgmoto {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+}
+
+.container-custom {
+  margin-right: 10%;
+}
+
+#imgrouts {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+}
+
+
 

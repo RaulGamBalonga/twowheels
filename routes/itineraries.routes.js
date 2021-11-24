@@ -30,7 +30,7 @@ router.post("/new", isLoggedIn, (req, res) => {
 
 
     Itinerary.create({ name, description, distance, difficulty, user_id: req.session.currentUser._id, $push: { location: location } })
-        .then(createdItinerary => res.redirect("/"))
+        .then(createdItinerary => res.redirect("/itinerarios/list"))
         .catch(err => console.log(err))
 }
 )

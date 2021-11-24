@@ -19,6 +19,9 @@ module.exports = app => {
   // Admin Routes
   app.use("/admin", require("./admin.routes"));
 
+  // Profile Routes
+  app.use("/profile", require("./user.routes"));
+
 
 }
 
