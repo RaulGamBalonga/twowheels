@@ -1,13 +1,19 @@
-<div class="container coasters-index">
-
+<div class="container itinerary-index">
+    <br>
     <a href="/itinerarios/new" class="btn btn-dark">Crear nueva Ruta</a>
-
+    
+    <br>
+    <br>
     <h1 style="font-weight: 100">Listado de Itinerarios</h1>
-
-
+    
     <!-- ***** CREA UNA FICHA DE LISTA POR CADA ITINERARIO **** -->
     <ul>
+       
+       <br>
+
         {{#each itineraries}}
+
+       <br>
 
         <li> <b> Nombre del Itinerario:</b> {{name}}
             <b>Distancia:</b> {{distance}}
@@ -18,11 +24,12 @@
         </li>
 
         <a href="/itinerarios/{{id}}"> Detalles</a>
+        
 
 
         {{/each}}
     </ul>
-
+        <a href="/" class="btn btn-dark">Volver</a>
 
 
 

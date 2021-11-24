@@ -1,6 +1,6 @@
 <div class="container itineraries-index">
 
-    <h1 style="font-weight: 100">N{{name}}</h1>
+    <h1 style="font-weight: 100">{{name}}</h1>
 
     <h4>Nombre del Itinerario:</h4>
     <p>{{name}}</p>
@@ -20,7 +20,7 @@
     <p><strong>Nombre</strong>: {{park_id.name}} </p>
     <p><strong>Descripción</strong>: {{description}} </p> --}}
 
-    <a href="/itinerarios" class="btn btn-dark">Volver</a>
+    <a href="/itinerarios/list" class="btn btn-dark">Volver</a>
     <a href="/itinerarios/delete/?id={{id}}" class="btn btn-dark">Delete</a> {{!-- hay que pòner la query -?- --}}
     <a href="/itinerarios/edit/{{id}}" class="btn btn-dark">Editar</a>
 </div>

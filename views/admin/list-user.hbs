@@ -1,0 +1,28 @@
+<div class="container user-index">
+
+   
+
+    <h1 style="font-weight: 100">Listado de usuarios</h1>
+
+
+    <!-- ***** CREA UNA FICHA DE LISTA DE USUARIOS **** -->
+    <ul>
+        {{#each users}}
+
+        <li> <b> Nombre del usuario:</b> {{username}}
+            <b>Tipo de permiso:</b> {{license}}
+            <b>Foto de perfil:</b>{{imageURL}}<b> 
+        </li>
+
+        
+        <a href="/admin/edit/{{id}}" class="btn btn-dark">Detalles Usuario</a>
+
+
+        {{/each}}
+    </ul>
+
+
+
+
+
+</div>
