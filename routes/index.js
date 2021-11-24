@@ -16,6 +16,9 @@ module.exports = app => {
 // Motorbikes Routes
   app.use("/motorbikes", require("./motorbikes.routes")); 
 
+  // Admin Routes
+  app.use("/admin", require("./admin.routes"));
+
 
 }
 

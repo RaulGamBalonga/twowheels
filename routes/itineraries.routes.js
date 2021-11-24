@@ -3,6 +3,11 @@ const Itinerary = require("../models/Itinerary.model");
 const router = require("express").Router();
 
 
+
+
+// Endpoints
+/* CREAR -create[<C>-R-U-D] Crear itinerario con su location inicial (longitud, latitud) y location final (longitud y latitud).. */
+
 router.get("/new", (req, res) => {
 
     res.render("itineraries/create-itinerary", {
@@ -16,7 +21,7 @@ router.get("/new", (req, res) => {
 
 
 router.post("/new", isLoggedIn, (req, res) => {
-    const { name, description, distance, difficulty, longitude, latitude} = req.body
+    const { name, description, distance, difficulty, longitude, latitude } = req.body
 
     const location = {
         type: 'Point',
@@ -31,17 +36,78 @@ router.post("/new", isLoggedIn, (req, res) => {
 )
 
 /* LEER -read [C-<R>-U-D] */
-// listado de todas las montañas rusas
-router.get("/", (req, res, next) => {
+// Listado de todos los itinerarios
+router.get("/list", (req, res, next) => {
 
     Itinerary.find()
-        /* .populate('park_id') */
-        .then(Itinerary => res.render("motorbikes/read-motorbike", { Itinerary }))
+
+        .then(itineraries => res.render("itineraries/list-itinerary", { itineraries }))
         .catch(err => console.log(err))
 });
-module.exports = router
+
+/* BORRAR -delete [C-R-U-<D>] */
+// Borrar un itinerario.
+
+router.get("/delete", (req, res) => {
+    const { id } = req.query
 
 
+    Itinerary.findByIdAndDelete(id)
+        .then(info => {
+            console.log(info)
+            res.redirect("/itinerarios/list")
+        })
+        .catch(err => console.log(err))
+
+})
+
+
+// /* EDITAR -update [C-R-<U>-D] */
+//  editar modelo moto
+router.get("/edit/:id", (req, res) => {
+    const { id } = req.params
+    Itinerary.findById(id)
+        .then((itinerary) => {
+            res.render("itineraries/update-itinerary", {
+                itinerary,
+                difficulty: ["EASY", "NORMAL", "HARD", "HELL IN THE EARTH"],
+                description: ["ASPHALT", "GRAVEL", "ENDURO", "HARD ENDURO", "DAKAR"]
+
+            })
+        })
+        .catch(err => console.log(err))
+
+
+
+
+})
+
+
+
+
+router.post("/edit", (req, res) => {
+    const { id } = req.query
+    const { name, description, distance, difficulty, longitude, latitude } = req.body
+
+    Itinerary.findByIdAndUpdate(id, { name, description, distance, difficulty, longitude, latitude }, { new: true })
+        .then(updatedItinerary => {
+            res.redirect("/itineraries/list")
+        })
+        .catch(err => console.log(err))
+
+
+})
+
+/* LEER -read [C-<R>-U-D] */
+//Detallles de un Itinerario
+router.get("/:id", (req, res, next) => {
+    const { id } = req.params
+
+    Itinerary.findById(id)
+
+        .then(itineraries => res.render("itineraries/details-itinerary", itineraries))
+        .catch(err => console.log(err))
+});
 
 
 
