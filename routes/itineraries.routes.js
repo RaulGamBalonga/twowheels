@@ -21,16 +21,21 @@ router.get("/new", (req, res) => {
 
 
 router.post("/new", isLoggedIn, (req, res) => {
-    const { name, description, distance, difficulty, longitude, latitude } = req.body
+    const { name, description, distance, difficulty, longitude1, latitude1, longitude2, latitude2 } = req.body
 
-    const location = {
+    const initLocation = {
         type: 'Point',
-        coordinates: [latitude, longitude]
+        coordinates: [latitude1, longitude1]
+    }
+
+    const endLocation = {
+        type: 'Point',
+        coordinates: [latitude2, longitude2]
     }
 
 
     Itinerary.create({ name, description, distance, difficulty, user_id: req.session.currentUser._id })
-        .then(itinerary => Itinerary.findByIdAndUpdate(itinerary._id, { $push: { location }}))    
+        .then(itinerary => Itinerary.findByIdAndUpdate(itinerary._id, { $push: { location: { $each: [initLocation, endLocation] } }}))
         .then(() => res.redirect("/itinerarios/list"))
         .catch(err => console.log(err))
 }
@@ -88,9 +93,19 @@ router.get("/edit/:id", (req, res) => {
 
 router.post("/edit", (req, res) => {
     const { id } = req.query
-    const { name, description, distance, difficulty, longitude, latitude } = req.body
-console.log(req.body)
-    Itinerary.findByIdAndUpdate(id, { name, description, distance, difficulty, longitude, latitude }, { new: true })
+    const { name, description, distance, difficulty, longitude1, latitude1, longitude2, latitude2 } = req.body
+
+    const initLocation = {
+        type: 'Point',
+        coordinates: [latitude1, longitude1]
+    }
+
+    const endLocation = {
+        type: 'Point',
+        coordinates: [latitude2, longitude2]
+    }
+
+    Itinerary.findByIdAndUpdate(id, { name, description, distance, difficulty, "location.0": initLocation, "location.1": endLocation  }, { new: true })
         .then(updatedItinerary => {
             res.redirect("/itinerarios/list")
         })

@@ -21,6 +21,8 @@ module.exports = app => {
 
   // Profile Routes
   app.use("/profile", require("./user.routes"));
+  
+  app.use("/api", require("./api.routes"));
 
 
 }

@@ -2,7 +2,7 @@
     <div class="row">
 
         <div class="col-md-6">
-            <h1 style="font-weight: 100">Nueva Ruta</h1>
+            <h1 style="font-weight: 100">Editar Ruta</h1>
         </div>
 
         <div class="col-md-6">
@@ -48,15 +48,27 @@
                 </div>
 
                 <div class="form-group">
-                    {{!-- TODO --}}
-                    <label for="location-input">Cordenadas</label>
-                    <input name="longitude" type="number" class="form-control" id="location-input" value="{{itinerary.longitude}}">
-                </div>
-                <div class="form-group">
-                    {{!-- TODO --}}
-                    <label for="location-input">Cordenadas</label>TODO
-                    <input name="latitude" type="number" class="form-control" id="location-input" value="{{itinerary.latitude}}">
-                </div>
+             
+            <label for="location-input">Cordenadas Iniciales-Longitud inicial</label>
+            <input name="longitude1" type="number" step="any" class="form-control" id="location-input">
+            </div>
+            <div class="form-group">
+                {{!-- TODO --}}
+                <label for="location-input">Cordenadas Iniciales-Latitud inicial</label>
+                <input name="latitude1" type="number" step="any" class="form-control" id="location-input">
+            </div>
+            
+            <div class="form-group">
+                {{!-- TODO --}}
+                <label for="location-input">Cordenadas Finales-Longitud final</label>
+                <input name="longitude2" type="number" step="any" class="form-control" id="location-input">
+            </div>
+            <div class="form-group">
+                {{!-- TODO --}}
+                <label for="location-input">Cordenadas Finales-Latitud final</label>
+                <input name="latitude2" type="number" step="any" class="form-control" id="location-input">
+            </div>
+
 
 
 

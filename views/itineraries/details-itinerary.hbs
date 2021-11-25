@@ -9,7 +9,7 @@
         <strong>Tipo de dificultad: </strong> {{difficulty}}
         <strong>Tipo de Terreno: </strong> {{description}}
         <strong>Localización: </strong>
-        <ul>
+    <ul>
         {{#each location}}
         <li class='point'>
             <ul>
@@ -19,7 +19,7 @@
             </ul>
         </li>
         {{/each}}
-        </ul>
+    </ul>
 
 
 
@@ -36,8 +36,10 @@
     <a href="/itinerarios/edit/{{id}}" class="btn btn-dark">Editar</a>
 </div>
 
-<h3>My First Map</h3>
-<div id="map" style='height: 200px; width: 100vw;'></div>
+<h3 class="center-title">Tu Ruta</h3>
+<div class="map">
+    <div id="map"></div>
+</div>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0pQBeKhipgpNoEAoYm7hrcNTDtZmkjlA"></script>
 <script type="text/javascript" src="../../js/main.js"></script>
