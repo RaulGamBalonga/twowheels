@@ -8,7 +8,18 @@
     <p><strong>Distancia: </strong> {{distance}}
         <strong>Tipo de dificultad: </strong> {{difficulty}}
         <strong>Tipo de Terreno: </strong> {{description}}
-        <strong>Localización: </strong> {{location}}
+        <strong>Localización: </strong>
+        <ul>
+        {{#each location}}
+        <li class='point'>
+            <ul>
+                {{#each coordinates}}
+                <li class='coordinate'>{{this}}</li>
+                {{/each}}
+            </ul>
+        </li>
+        {{/each}}
+        </ul>
 
 
 
@@ -24,3 +35,9 @@
     <a href="/itinerarios/delete/?id={{id}}" class="btn btn-dark">Delete</a> {{!-- hay que pòner la query -?- --}}
     <a href="/itinerarios/edit/{{id}}" class="btn btn-dark">Editar</a>
 </div>
+
+<h3>My First Map</h3>
+<div id="map" style='height: 200px; width: 100vw;'></div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0pQBeKhipgpNoEAoYm7hrcNTDtZmkjlA"></script>
+<script type="text/javascript" src="../../js/main.js"></script>

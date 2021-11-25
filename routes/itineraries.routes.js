@@ -29,8 +29,9 @@ router.post("/new", isLoggedIn, (req, res) => {
     }
 
 
-    Itinerary.create({ name, description, distance, difficulty, user_id: req.session.currentUser._id, $push: { location: location } })
-        .then(createdItinerary => res.redirect("/itinerarios/list"))
+    Itinerary.create({ name, description, distance, difficulty, user_id: req.session.currentUser._id })
+        .then(itinerary => Itinerary.findByIdAndUpdate(itinerary._id, { $push: { location }}))    
+        .then(() => res.redirect("/itinerarios/list"))
         .catch(err => console.log(err))
 }
 )
@@ -105,7 +106,9 @@ router.get("/:id", (req, res, next) => {
 
     Itinerary.findById(id)
 
-        .then(itineraries => res.render("itineraries/details-itinerary", itineraries))
+        .then(itinerary => {
+            console.log(itinerary.location.coordinates);
+            res.render("itineraries/details-itinerary", itinerary)})
         .catch(err => console.log(err))
 });
 
