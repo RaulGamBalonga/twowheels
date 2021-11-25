@@ -1,3 +1,6 @@
+<div class="background-lista-motos">
+
+
 <div class="container coasters-index">
 
     <a href="/motorbikes/new" class="btn btn-dark">Crear nueva moto</a>
@@ -10,15 +13,15 @@
         {{#each motorbikes}}
 
         <li> <b> Modelo de moto:</b> {{name}}
+            {{imageURL}}
             <b>Tipo de moto:</b> {{typesMotorbike}}
             <b>Detalles:</b>
             {{description}}<b> Marca:</b>
-            {{brand}} <b>Cilindrada:</b> {{cc}}
+            {{brand}} <b>Cilindrada:</b> {{cc}} cc
             <b>Peso:</b>
-            {{weight}}<b> Foto moto:</b>
-            {{imageURL}}
+            {{weight}} Kg <b> Foto moto:</b>
              <b> Tipo de permiso:</b>
-            {{License}}
+            {{license}}
         </li>
 
         <a href="/motorbikes/{{id}}"> detalles</a>
@@ -34,4 +37,5 @@
 
 
 
+</div>
 </div>

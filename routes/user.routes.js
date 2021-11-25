@@ -28,29 +28,15 @@ router.get("/", (req, res) => {
 module.exports = router
 
 
+/* Cloudinary para subir foto de perfil */
+// router.post("/new", fileUploader.single('imageURL'), (req, res) => {
+//     const {username,license,imageURL } = req.body
+//     console.log(req.file);
 
+//     User.create({ imageURL: req.file.path, license, user_id: req.session.currentUser._id })
+//         .then(createdUser => res.redirect(""))
+//         .catch(err => console.log(err))
+// }
+// )
 
-
-/* **************** */
-//User.findById(id)
-  //  .populate("friends")
-    //.then(userWithFriendsPopulated => /*...*/)
-    //.catch(err => /*...*/)
-
-    /////////// CON PROMISE ALL
-// router.get("/edit", (req, res) => {
-//   const { id } = req.query
-
-//   //Promise ALL recibe un array de promesas
-//   const promiseArr = [Coaster.findById(id), Park.find()]
-
-//   Promise.all(promiseArr)
-//     //la respuesta es el resultado de cada promesa en el mismo orden que entraron
-//     .then(response => {
-//       const coaster = response[0]
-//       const allParks = response[1]
-//       res.render("coasters/edit-coaster", { coaster, allParks })
-//     })
-//     .catch(err => console.log(err))
-
-// })
+/* const capitalized = (string) => string[0].toUpperCase() + string.slice(1).toLowerCase(); */
