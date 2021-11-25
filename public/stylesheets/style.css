@@ -11,6 +11,33 @@
 
 }
 
+.background-lista-motos {
+  height: 100vh;
+  width: 100vw;
+  background-image: url("../images/fondo-de-wall-street-del-ladrillo-para-el-diseño-textura-del-brickwor-viejo-87506262.jpg");
+  background-size: 100%;
+
+}
+
+.background-perfil {
+  height: 100vh;
+  width: 100vw;
+  background-image: url("../images/textura-interior-del-fondo-del-garaje-de-subterráneo-del-muro-de-cemento-48233315.jpg");
+  background-size: 100%;
+
+}
+
+.background-admin {
+  height: 100vh;
+  width: 100vw;
+  background-image: url("../images/hipertextual-universo-marvel-abriria-sus-puertas-ghost-rider-2020426989-scaled.jpg");
+  background-size: 100%;
+
+}
+
+
+
+
 #imgmoto {
   width: 100%;
   height: 100vh;
